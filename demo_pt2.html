@@ -18,12 +18,17 @@ function details(url){
                     </td>
                 </tr>`;
     }
-
-    function draw(data){
-        output.innerHTML = `<table>` + 
-            data.results.map( row ).join("") + 
-            `</table>`;
+    function draw(data) {
+        const table = document.createElement("table");
+        table.innerHTML = data.results.map(row).join("");
+        output.appendChild(table);
     }
+
+    // function draw(data){
+    //     output.innerHTML = `<table>` + 
+    //         data.results.map( row ).join("") + 
+    //         `</table>`;
+    // }
 
     const url = "https://pokeapi.co/api/v2/pokemon/"
     fetch(url).then(r => r.json()).then(draw);
