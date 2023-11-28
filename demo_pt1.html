@@ -1,0 +1,10 @@
+<body>
+    <pre id="output"></pre>
+</body>
+<script>
+    function draw(data){
+        output.innerHTML = JSON.stringify(data,0,4);
+    }
+    const url = "https://pokeapi.co/api/v2/pokemon/"
+    fetch(url).then(r => r.json()).then(draw);
+</script>
