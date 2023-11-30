@@ -2,24 +2,34 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Examples</title>
+
 </head>
 
 <body>
-
+<table>
+    <th>
+        <tr>
+            
+        </tr>
+    </th>
+</table>
 </body>
 <Script>
-    let job = {
-        title: "Web Designer",
-        startDate: "October 2022",
-        company: "AT&T",
-        minSalary: 52000,
-        maxSalary: 86000
-    };
-    let str = JSON.stringify(job);
-    console.log(str);
+let table = document.getElementById("userTable");
+
+fetch("http://jsonplaceholder.typicode.com/users")
+    .then(response => response.json())
+    .then(data => {
+        for (let i = 0; i < data.length; i++) {
+            let row = table.insertRow(-1);
+            let cell1 = row.insertCell(0);
+            let cell2 = row.insertCell(1);
+            cell1.innerHTML = data[i].name;
+            cell2.innerHTML = data[i].email;
+        }
+    });
+
+console.log(table)
 </Script>
 
 </html>
